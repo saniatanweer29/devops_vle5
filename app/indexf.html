@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine & Serenity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9e6a8 0%, #ffe6a0 50%, #ffd97d 100%);
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .student-info {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .student-name {
+            font-size: 1.4rem;
+            color: #6b4e2c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd97d 0%, #ffe6a0 100%);
+            padding: 5px 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        .student-details {
+            color: #8b6f47;
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        h1 {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #6b4e2c, #8b6f47, #6b4e2c, #8b6f47);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: gradientShift 4s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #8b6f47;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(107, 78, 44, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(107, 78, 44, 0.25);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .animated-icon {
+            animation: bounce 2s infinite;
+        }
+
+        .rotating-icon {
+            display: inline-block;
+            animation: rotate 3s linear infinite;
+        }
+
+        .card h3 {
+            color: #6b4e2c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .card p {
+            color: #8b6f47;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .feature-section {
+            margin-top: 80px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .feature-content {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 40px rgba(107, 78, 44, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .feature-content h2 {
+            font-size: 2.5rem;
+            color: #6b4e2c;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .feature-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+        }
+
+        .feature-item span {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h4 {
+            color: #6b4e2c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: #8b6f47;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #6b4e2c 0%, #8b6f47 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(107, 78, 44, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(107, 78, 44, 0.4);
+        }
+
+        .decorative-circle {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            bottom: -80px;
+            left: -80px;
+        }
+
+        .circle3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 217, 125, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 20px 10px rgba(255, 217, 125, 0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decorative-circle circle1"></div>
+    <div class="decorative-circle circle2"></div>
+    <div class="decorative-circle circle3"></div>
+
+    <div class="container">
+        <header>
+            <h1>Cloud & DevOps Essentials</h1>
+            <p class="tagline">VLE 3 Project - Course 21IPE333P</p>
+            <div class="student-info">
+                <p class="student-name">Made by <span class="highlight">Sania Tanweer</span></p>
+                <p class="student-details">Registration Number: RA2311003010872</p>
+                <p class="student-details">3rd Year B.Tech Student | SRM University</p>
+            </div>
+        </header>
+
+        <div class="cards">
+            <div class="card">
+                <span class="card-icon animated-icon">☁️</span>
+                <h3>Cloud Computing</h3>
+                <p>Explore scalable infrastructure, virtualization, and cloud service models that power modern applications and businesses.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon animated-icon">⚙️</span>
+                <h3>DevOps Practices</h3>
+                <p>Learn continuous integration, deployment pipelines, and automation techniques for efficient software delivery.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon animated-icon">🚀</span>
+                <h3>Modern Development</h3>
+                <p>Master containerization, orchestration, and infrastructure as code for building robust cloud-native solutions.</p>
+            </div>
+        </div>
+
+        <div class="feature-section">
+            <div class="feature-content">
+                <h2>Essential Technologies</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="rotating-icon">🔄</span>
+                        <h4>CI/CD Pipelines</h4>
+                        <p>Automated workflows for seamless code integration and deployment</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="rotating-icon">📦</span>
+                        <h4>Containerization</h4>
+                        <p>Docker and Kubernetes for portable application environments</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="rotating-icon">🔧</span>
+                        <h4>Infrastructure as Code</h4>
+                        <p>Terraform and automation tools for scalable infrastructure</p>
+                    </div>
+                </div>
+                <a href="#" class="cta-button">Learn More</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
